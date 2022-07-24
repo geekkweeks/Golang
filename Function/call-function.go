@@ -2,10 +2,12 @@ package main
 
 import "fmt"
 
-func calculate() {
-	fmt.Println(3 * 5)
+func calculate(x int, y int) {
+	fmt.Println(x * y)
 }
 
 func main() {
-	calculate()
+	x := 5
+	y := 10
+	calculate(x, y)
 }
