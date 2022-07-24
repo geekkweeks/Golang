@@ -1,13 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
-func calculate(x int, y int) {
-	fmt.Println(x * y)
+func calculate(x int, y int) int {
+	return x * y
+}
+
+func showResult(input int) string {
+	return "The result is " + strconv.Itoa(input)
 }
 
 func main() {
 	x := 5
 	y := 10
-	calculate(x, y)
+	res := calculate(x, y)
+	fmt.Println(showResult(res))
 }
