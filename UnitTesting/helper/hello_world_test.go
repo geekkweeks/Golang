@@ -5,6 +5,17 @@ import (
 	"testing"
 )
 
+// Unit test before and After
+// function name should be 'TestMain'
+// TestMain can running in one package only
+func TestMain(m *testing.M) {
+	fmt.Println("Before all unit test running")
+
+	m.Run()
+
+	fmt.Println("After all unit test running")
+}
+
 func TestHelloWorld(t *testing.T) {
 	name := "Alfan"
 	result := HelloWorld(name)
