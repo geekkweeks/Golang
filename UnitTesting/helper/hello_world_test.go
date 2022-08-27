@@ -39,3 +39,22 @@ func TestHelloWorldFailedNo(t *testing.T) {
 	}
 	fmt.Println("Will not executed")
 }
+
+// Error and Fatal functions have argument that we can set detail of error.
+func TestHelloWorldError(t *testing.T) {
+	name := "Yono"
+	result := HelloWorld(name)
+	if result != "Hi "+name {
+		t.Error("The result must be 'Hi " + name)
+	}
+	fmt.Println("Will executed")
+}
+
+func TestHelloWorldFatal(t *testing.T) {
+	name := "Yono"
+	result := HelloWorld(name)
+	if result != "Hi "+name {
+		t.Fatal("The result must be 'Hi " + name)
+	}
+	fmt.Println("Not executed")
+}
