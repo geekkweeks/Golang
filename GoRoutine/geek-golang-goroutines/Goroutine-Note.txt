@@ -1,0 +1,9 @@
+*) Sangat ringan , tidak boros memory, beda dg thread yg ukurannya yg berat
+
+
+---Channel----
+*) cara kerjany synchronous(blocking)
+*) mirip seperti async await di JS
+*) hanya bisa menerima 1 jenis data(string, int etc)
+*) bisa diambil lebih dari 1 goroutine
+*) harus diclose jika tidak digunakan , atau bisa menyebabkan memory leak
