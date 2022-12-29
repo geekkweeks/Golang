@@ -1,6 +1,7 @@
 package music_crud
 
 import (
+	"database/sql"
 	"context"
 	"fmt"
 	"testing"
@@ -40,7 +41,10 @@ func TestExecSelectSql(t *testing.T) {
 	// if rows.Next = false iterate will stop
 	for rows.Next() {
 		var id int
-		var name string
+
+		// to handle nullable from SQL, using sql.NullString
+		var name sql.NullString
+
 		err = rows.Scan(&id, &name)
 		if err != nil {
 			panic(err)
