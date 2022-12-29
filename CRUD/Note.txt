@@ -1,0 +1,3 @@
+Database Pooling 
+- Digunakan untuk management koneksi
+- bisa menentukan jumlah minimal dan maks koneksi yang dibuat golang, karena biasanya ada batas maksimal koneksi yg bisa ditangani oleh DB yg kita gunakan
