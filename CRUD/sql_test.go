@@ -13,7 +13,7 @@ func TestExecInsertSql(t *testing.T) {
 
 	ctx := context.Background()
 
-	sqlString := "INSERT INTO ARTISTS(ID,NAME) VALUES(4, 'Gulung')"
+	sqlString := "INSERT INTO ARTISTS (NAME) VALUES ('Cinta Laura')"
 	_, err := db.ExecContext(ctx, sqlString)
 	if err != nil {
 		panic(err)
@@ -84,4 +84,25 @@ func TestExecSelectWithParamSql(t *testing.T) {
 		fmt.Println("ID: ", id)
 		fmt.Println("Name: ", name)
 	}
+}
+
+func TestGetLastIdSql(t *testing.T) {
+	// get DB connection
+	db := GetConnection()
+	// dont forget to close db connection
+	defer db.Close()
+
+	// context allow to cancel the process
+	ctx := context.Background()
+	artistName := "cantik manis manja"
+
+	sqlString := "INSERT INTO ARTISTS (NAME) VALUES ($1)"
+	lastInsertId  := 0
+	err := db.QueryRowContext(ctx, sqlString, artistName).Scan(&lastInsertId )
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Data has been inserted with id: ", lastInsertId )
+
 }
