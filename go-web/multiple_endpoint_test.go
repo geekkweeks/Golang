@@ -21,6 +21,14 @@ func TestMultipleEndpoint(t *testing.T) {
 		fmt.Fprintf(writer, "Contact me")
 	})
 
+	mux.HandleFunc("/admin/", func(writer http.ResponseWriter, request *http.Request) {
+		fmt.Fprintf(writer, "Admin page")
+	})
+
+	mux.HandleFunc("/admin/setting", func(writer http.ResponseWriter, request *http.Request) {
+		fmt.Fprintf(writer, "Admin setting")
+	})
+
 	server := http.Server{
 		Addr:    "localhost:8080",
 		Handler: mux,
