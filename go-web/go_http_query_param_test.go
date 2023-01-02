@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"strings"
 )
 
 func HelloWebHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +21,12 @@ func MultipleParamWebHandler(w http.ResponseWriter, r *http.Request) {
 	status := r.URL.Query().Get("status")
 
 	fmt.Fprintf(w, "Hello %s %s %s", firstName, lastName, status)
+}
+
+func MutipleParamValuesWebHandler(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	names := query["name"]
+	fmt.Fprint(w, strings.Join(names, ","))
 }
 
 func TestQueryParamHttpTest(t *testing.T) {
@@ -49,6 +56,24 @@ func TestMultipleQueryParamHttpTest(t *testing.T) {
 	recorder := httptest.NewRecorder()
 
 	MultipleParamWebHandler(recorder, request)
+
+	response := recorder.Result()
+	// Read from body response
+	body, err := io.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	bodyString := string(body)
+
+	fmt.Println(bodyString)
+}
+
+func TestMultipleValueQueryParamHttpTest(t *testing.T) {
+	request := httptest.NewRequest(http.MethodGet, baseUrl+"/home?name=Alfan&name=zahriyono", nil)
+	recorder := httptest.NewRecorder()
+
+	MutipleParamValuesWebHandler(recorder, request)
 
 	response := recorder.Result()
 	// Read from body response
