@@ -1,0 +1,2 @@
+Handler
+- Server hanya bertugas sebagai Web Server, sedangkan untuk menerima HTTP Request yang masuk ke server, kita butuh yg namanya Handler
