@@ -1,2 +1,7 @@
 Handler
 - Server hanya bertugas sebagai Web Server, sedangkan untuk menerima HTTP Request yang masuk ke server, kita butuh yg namanya Handler
+
+Cookie:
+- Setiap request ke server, semua cookie akan dikirim
+- Value dari cookie itu bisa diedit (buka browser->application->cookies akan keliatan Name dan Value cookie)
+  untuk menghindari cookie itu bsa diedit ada mekanisme security nya
