@@ -11,3 +11,8 @@ Cookie:
 - Setiap request ke server, semua cookie akan dikirim
 - Value dari cookie itu bisa diedit (buka browser->application->cookies akan keliatan Name dan Value cookie)
   untuk menghindari cookie itu bsa diedit ada mekanisme security nya
+
+
+Embed:
+- jika kita punya directory yg berisikan file static, kita bisa menggunakan Golang Embed, dimana waktu kita compile file2 tersebut akan menjadi binary.
+    apa jadinya kalau tidak menggunakan embed ? kita harus copy manual ke server
