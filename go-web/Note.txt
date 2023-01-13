@@ -1,2 +1,10 @@
 Handler
 - Server hanya bertugas sebagai Web Server, sedangkan untuk menerima HTTP Request yang masuk ke server, kita butuh yg namanya Handler
+
+
+Stateles:
+- HTTP merupakan stateless antara client dan server. dimana server tidak menyimpan data apapun untuk mengingat request dari client
+
+Cookie:
+-Client bisa mengingat Login dari user, sehingga client tidak perlu diminta lagi(ada kaitannya dengan stateless, dimana untuk bisa diingat login user, request tidak disimpan disisi server melainkan di client yaitu dg cookie)
+- Cookie merupakan data yg dibuat diserver dan sengaja agar disimpan di web browser
