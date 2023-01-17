@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}}</title>
+</head>
+<body>
+<h1>{{.Name}}</h1>
+<p>{{.Description}}</p>
+{{with .Address}}
+    <p>Alamat: {{.Street}}</p>
+    <p>Country: {{.Country}}</p>
+{{else}}
+    <p>You have no address</p>
+{{end}}
+</body>
+</html>

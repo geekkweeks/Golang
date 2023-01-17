@@ -10,7 +10,8 @@ import (
 )
 
 type Address struct {
-	Street string
+	Street  string
+	Country string
 }
 
 type Page struct {
@@ -43,6 +44,18 @@ func TemplateDataMapWithStruct(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func TemplateDataMapWithStruct2(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("./templates/nestedtemplate.gohtml"))
+	t.ExecuteTemplate(w, "nestedtemplate.gohtml", Page{
+		Title: "HTML WITH STRUCT",
+		Name:  "Developer Tampan",
+		Address: Address{
+			Street:  "Jalan Lavon 2",
+			Country: "Belanda",
+		},
+	})
+}
+
 func TestTemplateDataMap(t *testing.T) {
 	request := httptest.NewRequest(http.MethodGet, "http://localhost:8080", nil)
 	recorder := httptest.NewRecorder()
@@ -58,6 +71,16 @@ func TestTemplateDataMapWithStruct(t *testing.T) {
 	recorder := httptest.NewRecorder()
 
 	TemplateDataMapWithStruct(recorder, request)
+
+	body, _ := io.ReadAll(recorder.Result().Body)
+	fmt.Print(string(body))
+}
+
+func TestTemplateDataMapWithStruct2(t *testing.T) {
+	request := httptest.NewRequest(http.MethodGet, "http://localhost:8080", nil)
+	recorder := httptest.NewRecorder()
+
+	TemplateDataMapWithStruct2(recorder, request)
 
 	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Print(string(body))
