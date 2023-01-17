@@ -4,10 +4,12 @@
     <title>{{.Title}}</title>
 </head>
 <body>
-{{if .Name}}
-    <h1>Hi, {{.Name}}</h1>
+{{if ge .ValueOne 70}}
+    <h1>Your Grade is A</h1>
+{{else if ge .ValueOne 50  }}
+    <h1>Your Grade is C</h1>
 {{else}}
-    <h1>You have no name</h1>
+    <h1>Your Grade is D</h1>
 {{end}}
 </body>
 </html>

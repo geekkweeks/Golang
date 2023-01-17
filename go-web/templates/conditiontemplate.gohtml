@@ -4,8 +4,10 @@
     <title>{{.Title}}</title>
 </head>
 <body>
-<h1>{{.Name}}</h1>
-<p>{{.Description}}</p>
-<p>Alamat: {{.Address.Street}}</p>
+{{if .Name}}
+    <h1>Hi, {{.Name}}</h1>
+{{else}}
+    <h1>You have no name</h1>
+{{end}}
 </body>
 </html>
