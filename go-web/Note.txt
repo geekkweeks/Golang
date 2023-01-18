@@ -17,3 +17,10 @@ Embed:
 - jika kita punya directory yg berisikan file static, kita bisa menggunakan Golang Embed, dimana waktu kita compile file2 tersebut akan menjadi binary.
     apa jadinya kalau tidak menggunakan embed ? kita harus copy manual ke server
 - rekomendasi banget sejak go land versi 1.16, file2 static akan dicompile dan tidak perlu lagi copy paste file ke server
+
+Middleware/filter/interceptor: (mungkin di C# dinamakan action filter)
+- Fitur dimana kita bisa menambhkan kode seblum dan sesudah sebuah handler dieksekusi
+- COntohnya seblum handler/cntroller dieksekusi akan dicheck melalui midleware apakah usernya sudah login atau belum
+- Go lang sendiri tidak ada middleware, tapi kita bisa membuat middleware ddengan interface
+- Cocok digunakan untuk Error handler
+- bila terjadi panic di handler kita bisa melakukan recover di midler dan mengubah panic menjadi error response(biar tidak berhenti aplikasiny)
