@@ -24,3 +24,9 @@ Middleware/filter/interceptor: (mungkin di C# dinamakan action filter)
 - Go lang sendiri tidak ada middleware, tapi kita bisa membuat middleware ddengan interface
 - Cocok digunakan untuk Error handler
 - bila terjadi panic di handler kita bisa melakukan recover di midler dan mengubah panic menjadi error response(biar tidak berhenti aplikasiny)
+
+XSS (Cross site Scripting)
+- salah satu security issue
+- celah keamanan dimana pelaku sengaja memasukan parameter yg mengandung Javascript agar dirender di web kita
+- Tujuannya biasanya adalah untuk mencuri cookie browser pengguna yg sedang mengakses web kita
+- XSS bisa menyebabkan account pengguna kita diambil alih oleh pelaku
