@@ -38,3 +38,20 @@ func TestLogJson(t *testing.T) {
 	}
 	logJson(employeeObj)
 }
+
+func TestDecodeJson(t *testing.T) {
+	jsonString := `{"Id":35,"Name":"Alfan Zah","Department":"IT","Salary":23000,"IsPermanent":true}`
+	jsonBytes := []byte(jsonString)
+
+	employee := &Employee{}
+
+	err := json.Unmarshal(jsonBytes, employee)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(employee)
+	fmt.Println(employee.Id)
+	fmt.Println(employee.Name)
+
+}
