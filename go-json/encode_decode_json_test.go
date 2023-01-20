@@ -12,6 +12,13 @@ type Employee struct {
 	Department  string
 	Salary      int
 	IsPermanent bool
+	Skills      []string
+	Benefits    []EmployeeBenefit
+}
+
+type EmployeeBenefit struct {
+	BenefitName string
+	IsExpired   bool
 }
 
 func logJson(data interface{}) {
@@ -54,4 +61,67 @@ func TestDecodeJson(t *testing.T) {
 	fmt.Println(employee.Id)
 	fmt.Println(employee.Name)
 
+}
+
+func TestJSONArray(t *testing.T) {
+	employeeObj := Employee{
+		Id:          23,
+		Name:        "Alfan Zahriyono",
+		Department:  "IT",
+		Salary:      23000,
+		IsPermanent: true,
+		Skills:      []string{"C#", "ReactJS", "JS"},
+	}
+	logJson(employeeObj)
+}
+
+func TestDecodeJSONArray(t *testing.T) {
+	jsonString := `{"Id":23,"Name":"Alfan Zahriyono","Department":"IT","Salary":23000,"IsPermanent":true,"Skills":["C#","ReactJS","JS"]}`
+	jsonBytes := []byte(jsonString)
+
+	employee := &Employee{}
+
+	err := json.Unmarshal(jsonBytes, employee)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(employee)
+	fmt.Println(employee.Skills[0])
+
+}
+
+func TestEncodeAdvanceJson(t *testing.T) {
+	employeeObj := Employee{
+		Id:          23,
+		Name:        "Alfan Zahriyono",
+		Department:  "IT",
+		Salary:      23000,
+		IsPermanent: true,
+		Skills:      []string{"C#", "SQL", ".NET"},
+		Benefits: []EmployeeBenefit{
+			{
+				BenefitName: "Private Insurance",
+				IsExpired:   true,
+			},
+			{
+				BenefitName: "Bonuses",
+				IsExpired:   false,
+			},
+		},
+	}
+	logJson(employeeObj)
+}
+
+func TestDecodeAdvanceJson(t *testing.T) {
+	jsonString := `{"Id":23,"Name":"Alfan Zahriyono","Department":"IT","Salary":23000,"IsPermanent":true,"Skills":["C#","SQL",".NET"],"Benefits":[{"BenefitName":"Private Insurance","IsExpired":true},{"BenefitName":"Bonuses","IsExpired":false}]}`
+	jsonByte := []byte(jsonString)
+
+	employee := &Employee{}
+	err := json.Unmarshal(jsonByte, employee)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(employee)
+	fmt.Println(employee.Benefits)
 }
